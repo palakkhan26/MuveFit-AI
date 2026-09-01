@@ -1,0 +1,145 @@
+{
+  "user_id": 1,
+  "latest_workout": {
+    "workout_id": "wo_20260901_01",
+    "exercise": "Squat",
+    "date": "2026-09-01",
+    "total_reps": 10,
+    "average_score": 82.4,
+    "best_rep": 2,
+    "best_score": 96.0,
+    "worst_rep": 10,
+    "worst_score": 64.0,
+    "main_issue": "Knee cave (valgus) under fatigue",
+    "form_trend": "Declining in final 4 reps",
+    "tempo_trend": "Rushing concentric phase on reps 7-10",
+    "recommendation": "Incorporate banded squats into warmups to strengthen glute medius and cue knees outward as fatigue sets in."
+  },
+  "workout_history": [
+    {
+      "date": "2026-08-15",
+      "exercise": "Squat",
+      "average_score": 68.5,
+      "total_reps_or_duration": "10 reps",
+      "main_issue": "Excessive forward torso lean"
+    },
+    {
+      "date": "2026-08-18",
+      "exercise": "Plank",
+      "average_score": 70.0,
+      "total_reps_or_duration": "45 seconds",
+      "main_issue": "Sagging lumbar spine"
+    },
+    {
+      "date": "2026-08-21",
+      "exercise": "Glute Bridge",
+      "average_score": 74.0,
+      "total_reps_or_duration": "12 reps",
+      "main_issue": "Incomplete hip extension"
+    },
+    {
+      "date": "2026-08-25",
+      "exercise": "Squat",
+      "average_score": 77.0,
+      "total_reps_or_duration": "10 reps",
+      "main_issue": "Knee valgus on late reps"
+    },
+    {
+      "date": "2026-08-28",
+      "exercise": "Plank",
+      "average_score": 81.5,
+      "total_reps_or_duration": "60 seconds",
+      "main_issue": "Elevated hips near failure"
+    },
+    {
+      "date": "2026-08-30",
+      "exercise": "Glute Bridge",
+      "average_score": 85.0,
+      "total_reps_or_duration": "15 reps",
+      "main_issue": "Minor pelvis asymmetry at lockout"
+    },
+    {
+      "date": "2026-09-01",
+      "exercise": "Squat",
+      "average_score": 82.4,
+      "total_reps_or_duration": "10 reps",
+      "main_issue": "Knee cave under fatigue"
+    }
+  ],
+  "movement_fingerprint": {
+    "squat": {
+      "recurring_issue": "Knee valgus (internal rotation)",
+      "frequency": "42% of total recorded reps"
+    },
+    "plank": {
+      "recurring_issue": "Anterior pelvic tilt (lumbar sag)",
+      "frequency": "28% of total recorded duration"
+    },
+    "glute_bridge": {
+      "stability_score": 86.5
+    },
+    "overall_biggest_recurring_issue": "Knee alignment inconsistency during multi-joint lower body movements"
+  },
+  "rep_data": [
+    {
+      "rep_number": 1,
+      "score": 94.0,
+      "detected_issue": "None",
+      "tempo_seconds": 3.2
+    },
+    {
+      "rep_number": 2,
+      "score": 96.0,
+      "detected_issue": "None",
+      "tempo_seconds": 3.1
+    },
+    {
+      "rep_number": 3,
+      "score": 92.5,
+      "detected_issue": "None",
+      "tempo_seconds": 3.0
+    },
+    {
+      "rep_number": 4,
+      "score": 90.0,
+      "detected_issue": "Slight torso forward pitch",
+      "tempo_seconds": 3.1
+    },
+    {
+      "rep_number": 5,
+      "score": 88.0,
+      "detected_issue": "Minor knee tracking instability",
+      "tempo_seconds": 2.9
+    },
+    {
+      "rep_number": 6,
+      "score": 84.5,
+      "detected_issue": "Slight knee valgus on ascent",
+      "tempo_seconds": 2.8
+    },
+    {
+      "rep_number": 7,
+      "score": 78.0,
+      "detected_issue": "Moderate left knee cave",
+      "tempo_seconds": 2.5
+    },
+    {
+      "rep_number": 8,
+      "score": 71.0,
+      "detected_issue": "Bilateral knee valgus on ascent",
+      "tempo_seconds": 2.4
+    },
+    {
+      "rep_number": 9,
+      "score": 66.0,
+      "detected_issue": "Severe knee valgus and shallow depth",
+      "tempo_seconds": 2.2
+    },
+    {
+      "rep_number": 10,
+      "score": 64.0,
+      "detected_issue": "Severe bilateral knee valgus and rushed ascent",
+      "tempo_seconds": 2.0
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuveFit AI Coach</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .chat-box {
+      width: 440px;
+      height: 600px;
+      background: #1e293b;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    .header {
+      background: #2563eb;
+      padding: 16px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 16px;
+    }
+    .messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .msg {
+      padding: 10px 14px;
+      border-radius: 8px;
+      max-width: 82%;
+      line-height: 1.45;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .bot {
+      background: #334155;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+    .user {
+      background: #2563eb;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+    .input-area {
+      display: flex;
+      padding: 12px;
+      background: #0f172a;
+      gap: 8px;
+    }
+    input {
+      flex: 1;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #fff;
+      outline: none;
+      font-size: 14px;
+    }
+    input:focus {
+      border-color: #3b82f6;
+    }
+    button {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    button:disabled {
+      background: #475569;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-box">
+    <div class="header">🤖 MuveFit AI Coach</div>
+    <div class="messages" id="chat">
+      <div class="msg bot">Hi! I'm your MuveFit Coach. Ask me anything about your form, progress, or latest workout.</div>
+    </div>
+    <div class="input-area">
+      <input 
+        type="text" 
+        id="userInput" 
+        placeholder="Ask your coach..." 
+        onkeydown="if(event.key === 'Enter') sendMessage()" 
+      />
+      <button id="sendBtn" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const sendBtn = document.getElementById("sendBtn");
+      const chat = document.getElementById("chat");
+      const msg = input.value.trim();
+      
+      if (!msg || sendBtn.disabled) return;
+
+      // Add user message
+      chat.innerHTML += `<div class="msg user">${msg}</div>`;
+      input.value = "";
+      sendBtn.disabled = true;
+      chat.scrollTop = chat.scrollHeight;
+
+      // Add temporary loading indicator
+      const loadingId = "loading-" + Date.now();
+      chat.innerHTML += `<div class="msg bot" id="${loadingId}">Analyzing workout data...</div>`;
+      chat.scrollTop = chat.scrollHeight;
+
+      try {
+        const res = await fetch("http://127.0.0.1:8000/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: 1, message: msg })
+        });
+        
+        const data = await res.json();
+        const loadingElem = document.getElementById(loadingId);
+        
+        if (loadingElem) {
+          loadingElem.textContent = data.answer || "No response received.";
+        }
+      } catch (err) {
+        const loadingElem = document.getElementById(loadingId);
+        if (loadingElem) {
+          loadingElem.textContent = "Error connecting to the backend server. Make sure FastAPI is running.";
+        }
+      } finally {
+        sendBtn.disabled = false;
+        chat.scrollTop = chat.scrollHeight;
+        input.focus();
+      }
+    }
+  </script>
+</body>
+</html>
